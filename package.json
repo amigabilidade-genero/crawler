@@ -1,0 +1,46 @@
+{
+  "name": "jbcrawler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon -w src --exec \"babel-node src --presets env\"",
+    "build": "rimraf dist && babel src -s -D -d dist --presets env",
+    "start": "node dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PauloHenriqueRCS/JBCrawler.git"
+  },
+  "author": "Paulo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PauloHenriqueRCS/JBCrawler/issues"
+  },
+  "homepage": "https://github.com/PauloHenriqueRCS/JBCrawler#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "chromedriver": "^2.40.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "nodemon": "1.18.3",
+    "rimraf": "2.6.2",
+    "selenium-webdriver": "^4.0.0-alpha.1"
+  },
+  "dependecies": {
+    "express": "^4.16.3",
+    "selenium-webdriver": "^4.0.0-alpha.1",
+    "chromedriver": "^2.40.0",
+    "assert": "^1.4.1"
+  },
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
