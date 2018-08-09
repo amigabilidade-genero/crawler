@@ -1,9 +1,8 @@
 import 'chromedriver'
 import chrome from 'selenium-webdriver/chrome'
-import { Builder, By, Key } from 'selenium-webdriver'
-import versionSite from '../versionSite/version'
+import { Builder, By, Key, until } from 'selenium-webdriver'
+import assert from 'assert'
 
-// const URL = 'https://www.jusbrasil.com.br/jurisprudencia/busca?q=assédio+Belo+Horizonte+2017'
 const URL = 'https://www.jusbrasil.com.br'
 
 const chromeOptions = new chrome.Options()
@@ -19,46 +18,65 @@ chromeOptions.addArguments('--disable-extensionss')
 chromeOptions.addArguments('--no-sandbox')
 chromeOptions.addArguments('test-type=browser')
 
-const driver = new Builder()
-  .forBrowser('chrome')
-  .withCapabilities(chromeOptions)
-  .build()
-var VERSION = ''
-
-const MasterWebDriver = () => {
-  initializaeBrowser()
-  fetchUrl()
-  // versionSite(VERSION)
-}
-
-const initializaeBrowser = async () => {
+const initBrowser = () => {
+  var driver
   try {
-    await driver.manage().deleteAllCookies()
+    driver = new Builder()
+      .forBrowser('chrome')
+      .withCapabilities(chromeOptions)
+      .build()
+    driver.manage().deleteAllCookies()
+    return driver
   } catch (error) {
     console.log('Server error: Ocorreu um erro inesperado na inicialização do arquivo binário respectivo ao navegador.'
     )
     console.log('Erro interno: ', error)
-    await driver.close()
+    driver.close()
   }
 }
 
-const fetchUrl = async () => {
-  try {
-    await driver.get(URL)
-    console.log('Success: ', URL)
-    Steps()
-  } catch (ERROR) {
-    console.log('ERROR: ', ERROR)
-  } finally {
-    // await driver.close()
-  }
+const driver = initBrowser()
+
+const MasterWebDriver = () => {
+  console.log('Initialized MasterWebDriver')
+  Steps()
+  // versionSite(VERSION)
 }
 
 const Steps = async () => {
-  await sign()
-  await setTimeout(() => {
-    customSearchConfig()
-  }, 3000)
+  await fetchUrl()
+  // await sign()
+  await driver.sleep(3000)
+  await customSearchConfig()
+  await driver.sleep(3000)
+
+  var webElements = driver.findElements(By.className('title small'))
+  webElements.then(async (element) => {
+    if (element.length > 0) {
+      // rotina 1
+      console.log('rotina 1')
+      element[0].findElement(By.tagName('a')).click()
+      var inteiroTeor = await webElements.findElements(By.className('JurisprudenceDecisionTabs'))
+      console.log(inteiroTeor.length)
+    } else {
+      // rotina 2
+      console.log('rotina 2')
+      webElements = driver.findElements(By.className('BaseSnippetWrapper-title'))
+      webElements.then(async (element) => {
+        element[0].findElement(By.tagName('a')).click()
+        var inteiroTeor = await webElements.findElements(By.className('JurisprudenceDecisionTabs'))
+        console.log(inteiroTeor.length)
+      })
+    }
+  })
+}
+
+function printConsole (string) {
+  return string
+}
+
+const fetchUrl = async () => {
+  await driver.get(URL)
 }
 
 const sign = async () => {
@@ -80,40 +98,29 @@ const customSearchConfig = async () => {
   await customSearch[2].click()
   await driver.findElement(By.id('10000575')).click()
   await customSearch[2].click()
-  // Argumentos e busca
   search()
 }
 
 const search = async () => {
   var keys = 'assédio sexual'
-  var btn = driver.findElement(By.name('q'))
+  var btn = await driver.findElement(By.name('q'))
   btn.sendKeys(keys, Key.ENTER)
 }
 
-const initV1 = () => {
-  try {
-    var searchForm = driver.findElement(By.className('title small'))
-    searchForm = searchForm.findElement(By.tagName('a'))
-    searchForm.click()
-    searchForm = searchForm.findElement(By.className('JurisprudenceDecisionTabs-item btn active'))
-    searchForm.click()
-  } catch (ERROR) {
-    console.log('Old version faill')
-    console.log('Call new version')
-    initV2()
-  }
-}
+// const getDocuments1 = async () => {
+//   var searchForm = driver.findElement(By.className('title small'))
+//   searchForm = searchForm.findElement(By.tagName('a'))
+//   searchForm.click()
+//   searchForm = searchForm.findElement(By.className('JurisprudenceDecisionTabs-item btn active'))
+//   searchForm.click()
+// }
 
-const initV2 = async () => {
-  try {
-    console.log('New version change')
-    var searchForm = await driver.findElement(By.className('BaseSnippetWrapper-title'))
-    searchForm = searchForm.findElement(By.tagName('a'))
-    searchForm.click()
-  } catch (ERROR) {
-    console.log('New version faill')
-    console.log('ERROR: ', ERROR)
-  }
-}
+// const getDocuments2 = async () => {
+//   var searchForm = await driver.findElement(By.className('BaseSnippetWrapper-title'))
+//   searchForm = searchForm.findElement(By.tagName('a'))
+//   searchForm.click()
+//   // var ij = await driver.findElements(By.className('i juris'))
+//   // console.log(ij[1])
+// }
 
 export default MasterWebDriver
