@@ -1,0 +1,2 @@
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\ChromeWebDriver\obj\Debug\ChromeWebDriver.csprojAssemblyReference.cache
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\ChromeWebDriver\obj\Debug\ChromeWebDriver.csproj.CoreCompileInputs.cache

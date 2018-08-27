@@ -1,0 +1,3 @@
+C:\Users\Paulo\Documents\GitHub\crawler\Playground\obj\Debug\netcoreapp2.1\Playground.csproj.CoreCompileInputs.cache
+C:\Users\Paulo\Documents\GitHub\crawler\Playground\obj\Debug\netcoreapp2.1\Playground.AssemblyInfoInputs.cache
+C:\Users\Paulo\Documents\GitHub\crawler\Playground\obj\Debug\netcoreapp2.1\Playground.AssemblyInfo.cs

@@ -10,6 +10,8 @@ namespace Crawler.Site
 {
     public class JusBrasil : Crawler
     {
+        #region Propeties
+
         private const string URL = "https://www.jusbrasil.com.br";
         private const string LOGIN_URL = "https://www.jusbrasil.com.br/login?next_url=https%3A%2F%2Fwww.jusbrasil.com.br%2Fhome";
         private const string KeyWorks = "assédio sexual Belo Horizonte";
@@ -17,24 +19,31 @@ namespace Crawler.Site
         private Process process { get; set; }
         private int BackCount = 1;
 
+        #endregion
+
+        #region Constructor
+
         public JusBrasil() { }
+
+        #endregion
+
+        #region Public Methods
 
         public void Start()
         {
             processProcesses = new List<Process>();
             try
             {
-                SearchHome();
+                Url(URL);
                 Sign();
                 Thread.Sleep(3000);
                 CustomSearchConfig();
                 Search();
-                JusNavigate();
-                InteratorPage();
+                Navigate();
             }
             catch (Exception e)
             {
-                //throw e;
+                throw e;
             }
             finally
             {
@@ -42,11 +51,9 @@ namespace Crawler.Site
             }
         }
 
-        private void SearchHome()
-        {
-            Url(URL);
-            //Url(LOGIN_URL);
-        }
+        #endregion
+
+        #region Private Methods
 
         private void CustomSearchConfig()
         {
@@ -71,7 +78,7 @@ namespace Crawler.Site
             search.Submit();
         }
 
-        private void InteratorPage()
+        private void Navigate()
         {
             while (ExistsElement(_webDriver, "//*[contains(@data-filter-value,'next')]"))
             {
@@ -136,7 +143,6 @@ namespace Crawler.Site
             processProcesses.Add(process);
         }
 
-
         private void ExtractResume()
         {
             var resumeTitle = _webDriver.FindElements(By.XPath("//*[@class='col-md-9 col-xs-12 JurisprudenceGeneralData-title']"));
@@ -168,16 +174,8 @@ namespace Crawler.Site
                     continue;
                 }
             }
-
-            //process = new Process();
-            //if (_webDriver.FindElement(By.XPath("//*[@data-reactid='65']")).Text == "Processo")
-            //    process.Id = _webDriver.FindElement(By.XPath("//*[@data-reactid='66']")).Text;
-            //else if (_webDriver.FindElement(By.XPath("//*[@data-reactid='68']")).Text == "Orgão Julgador")
-            //    process.OJ = _webDriver.FindElement(By.XPath("//*[@data-reactid='69']")).Text;
-            //else if (_webDriver.FindElement(By.XPath("//*[@data-reactid='71']")).Text == "Publicação")
-            //    process.Publication = _webDriver.FindElement(By.XPath("//*[@data-reactid='72']")).Text;
-            //else if (_webDriver.FindElement(By.XPath("//*[@data-reactid='74']")).Text == "Relator")
-            //    process.Publication = _webDriver.FindElement(By.XPath("//*[@data-reactid='75']")).Text;
         }
+
+        #endregion
     }
 }

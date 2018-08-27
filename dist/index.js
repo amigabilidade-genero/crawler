@@ -8,6 +8,10 @@ var _express = require('express');
 
 var _express2 = _interopRequireDefault(_express);
 
+var _masterWebDriver = require('./webDriver/masterWebDriver');
+
+var _masterWebDriver2 = _interopRequireDefault(_masterWebDriver);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var app = (0, _express2.default)();
@@ -15,32 +19,9 @@ var app = (0, _express2.default)();
 var port = 3000;
 
 app.listen(port, function () {
-  console.log('Started on port ${port}');
+  console.log('Started on port ', port);
+  (0, _masterWebDriver2.default)();
 });
 
 exports.default = app;
-
-//  import 'chromedriver';
-// // var webdriver = require('selenium-webdriver');
-// // var driver = new webdriver.Builder()
-// //   .forBrowser('chrome')
-// //   .build();
-
-// //   driver.manage().deleteAllCookies()
-
-// //   driver.get('https://google.com')
-// //   driver.close()
-
-// import { Builder, By, Key, until } from 'selenium-webdriver';
-
-// (async function example() {
-//   let driver = await new Builder().forBrowser('chrome').build();
-//   try {
-//     await driver.get('https://www.google.com');
-//     await driver.findElement(By.name('q')).sendKeys('webdriver', Key.RETURN);
-//     await driver.wait(until.titleIs('webdriver - Google Search'), 1000);
-//   } finally {
-//     await driver.quit();
-//   }
-// })();
 //# sourceMappingURL=index.js.map

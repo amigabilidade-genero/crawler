@@ -1,0 +1,14 @@
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\JusBrasilCrawler\bin\Debug\JusBrasilCrawler.exe.config
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\JusBrasilCrawler\bin\Debug\JusBrasilCrawler.exe
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\JusBrasilCrawler\bin\Debug\JusBrasilCrawler.pdb
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\JusBrasilCrawler\bin\Debug\SharpDriver.dll
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\JusBrasilCrawler\bin\Debug\WebDriver.dll
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\JusBrasilCrawler\bin\Debug\SharpDriver.pdb
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\JusBrasilCrawler\bin\Debug\WebDriver.xml
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\JusBrasilCrawler\obj\Debug\JusBrasilCrawler.csprojAssemblyReference.cache
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\JusBrasilCrawler\obj\Debug\JusBrasilCrawler.csproj.CoreCompileInputs.cache
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\JusBrasilCrawler\obj\Debug\JusBrasilCrawler.csproj.CopyComplete
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\JusBrasilCrawler\obj\Debug\JusBrasilCrawler.exe
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\JusBrasilCrawler\obj\Debug\JusBrasilCrawler.pdb
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\JusBrasilCrawler\bin\Debug\Google.Protobuf.dll
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\JusBrasilCrawler\bin\Debug\Google.Protobuf.xml

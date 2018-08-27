@@ -10,15 +10,25 @@ namespace Crawler
 {
     public abstract class Crawler
     {
+        #region Propeties
+        
         protected static IWebDriver _webDriver { get; set; }
         protected ChromeOptions _chromeOptions { get; set; }
         protected WebDriverWait _webDriverWait { get; set; }
 
+        #endregion
+
+        #region Constructor
+      
         public Crawler()
         {
             InitWebDriver();
         }
 
+        #endregion
+
+        #region Private methods
+      
         private void InitWebDriver()
         {
             ChromeOptions options = new ChromeOptions();
@@ -40,6 +50,9 @@ namespace Crawler
             _webDriver.Manage().Window.Maximize();
         }
 
+        #endregion
+
+        #region Protect methods
         protected void Url(string url)
         {
             _webDriver.Url = url;
@@ -51,11 +64,13 @@ namespace Crawler
             {
                 _webDriver.FindElement(By.XPath(str));
             }
-            catch (NoSuchElementException e)
+            catch (NoSuchElementException)
             {
                 return false;
             }
             return true;
         }
+        
+        #endregion
     }
 }

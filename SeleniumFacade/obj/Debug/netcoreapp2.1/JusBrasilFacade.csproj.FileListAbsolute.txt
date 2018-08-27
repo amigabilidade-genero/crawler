@@ -1,0 +1,8 @@
+C:\Users\Paulo\Documents\GitHub\crawler\SeleniumFacade\bin\Debug\netcoreapp2.1\JusBrasilFacade.deps.json
+C:\Users\Paulo\Documents\GitHub\crawler\SeleniumFacade\bin\Debug\netcoreapp2.1\JusBrasilFacade.runtimeconfig.json
+C:\Users\Paulo\Documents\GitHub\crawler\SeleniumFacade\bin\Debug\netcoreapp2.1\JusBrasilFacade.runtimeconfig.dev.json
+C:\Users\Paulo\Documents\GitHub\crawler\SeleniumFacade\bin\Debug\netcoreapp2.1\JusBrasilFacade.dll
+C:\Users\Paulo\Documents\GitHub\crawler\SeleniumFacade\obj\Debug\netcoreapp2.1\JusBrasilFacade.csprojAssemblyReference.cache
+C:\Users\Paulo\Documents\GitHub\crawler\SeleniumFacade\obj\Debug\netcoreapp2.1\JusBrasilFacade.csproj.CoreCompileInputs.cache
+C:\Users\Paulo\Documents\GitHub\crawler\SeleniumFacade\obj\Debug\netcoreapp2.1\JusBrasilFacade.AssemblyInfoInputs.cache
+C:\Users\Paulo\Documents\GitHub\crawler\SeleniumFacade\obj\Debug\netcoreapp2.1\JusBrasilFacade.AssemblyInfo.cs

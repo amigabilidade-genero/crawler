@@ -1,0 +1,9 @@
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\SharpDriver\bin\Debug\SharpDriver.dll
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\SharpDriver\bin\Debug\SharpDriver.pdb
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\SharpDriver\bin\Debug\WebDriver.dll
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\SharpDriver\bin\Debug\WebDriver.xml
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\SharpDriver\obj\Debug\SharpDriver.csprojAssemblyReference.cache
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\SharpDriver\obj\Debug\SharpDriver.csproj.CoreCompileInputs.cache
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\SharpDriver\obj\Debug\SharpDriver.csproj.CopyComplete
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\SharpDriver\obj\Debug\SharpDriver.dll
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\SharpDriver\obj\Debug\SharpDriver.pdb
