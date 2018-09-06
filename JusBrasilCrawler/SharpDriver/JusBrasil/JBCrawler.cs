@@ -39,7 +39,7 @@ namespace SharpDriver.JusBrasil
             {
                 Url(URL);
                 Sign();
-                //Thread.Sleep(3000);
+                Thread.Sleep(3000);
                 CustomSearchConfig();
                 Search();
                 Navigate();
@@ -97,6 +97,7 @@ namespace SharpDriver.JusBrasil
 
         private void JusNavigate()
         {
+            Thread.Sleep(3000);
             if (ExistsElement("//*[contains(@class,'title small')]"))
             {
                 var oldVersionSize = _webDriver.FindElements(By.XPath("//*[@class='title small']"));
@@ -106,9 +107,7 @@ namespace SharpDriver.JusBrasil
                     oldV[i].FindElement(By.TagName("a")).Click();
                     ExtractInfo();
                     for (int k = 0; k < BackCount; k++)
-                    {
                         _webDriver.Navigate().Back();
-                    }
                     BackCount = 1;
                 }
             }
@@ -121,9 +120,7 @@ namespace SharpDriver.JusBrasil
                     newV[i].FindElement(By.TagName("a")).Click();
                     ExtractInfo();
                     for (int k = 0; k < BackCount; k++)
-                    {
                         _webDriver.Navigate().Back();
-                    }
                     BackCount = 1;
                 }
             }
@@ -137,7 +134,6 @@ namespace SharpDriver.JusBrasil
                 selectType[0].Click();
                 BackCount += 1;
             }
-
             ExtractResume();
             selectType = _webDriver.FindElements(By.ClassName("JurisprudenceDecisionTabs-itemWrapper"));
             selectType[1].Click();

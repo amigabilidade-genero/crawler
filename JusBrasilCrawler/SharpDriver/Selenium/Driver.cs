@@ -43,7 +43,7 @@ namespace SharpDriver.Selenium
                 "--disable-extensions",
                 "--incognito"
                 );
-            _webDriver = new ChromeDriver(@"C:\Users\Paulo\Documents\GitHub\crawler\Crawler\bin", options);
+            _webDriver = new ChromeDriver(@"C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\SharpDriver\bin", options);
             _webDriver.Manage().Cookies.DeleteAllCookies();
             _webDriver.Manage().Window.Maximize();
         }
