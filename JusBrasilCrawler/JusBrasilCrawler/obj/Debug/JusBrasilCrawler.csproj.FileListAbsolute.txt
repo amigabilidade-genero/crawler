@@ -12,3 +12,5 @@ C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\JusBrasilCrawler\obj\De
 C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\JusBrasilCrawler\obj\Debug\JusBrasilCrawler.pdb
 C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\JusBrasilCrawler\bin\Debug\Google.Protobuf.dll
 C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\JusBrasilCrawler\bin\Debug\Google.Protobuf.xml
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\JusBrasilCrawler\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\JusBrasilCrawler\bin\Debug\Newtonsoft.Json.xml

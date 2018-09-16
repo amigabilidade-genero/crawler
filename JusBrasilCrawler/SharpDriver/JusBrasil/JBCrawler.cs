@@ -76,6 +76,7 @@ namespace SharpDriver.JusBrasil
 
         private void Search()
         {
+            Thread.Sleep(1000);
             var search = _webDriver.FindElement(By.Name("q"));
             search.SendKeys(KeyWorks);
             search.Submit();
@@ -97,7 +98,7 @@ namespace SharpDriver.JusBrasil
 
         private void JusNavigate()
         {
-            Thread.Sleep(3000);
+            Thread.Sleep(1000);
             if (ExistsElement("//*[contains(@class,'title small')]"))
             {
                 var oldVersionSize = _webDriver.FindElements(By.XPath("//*[@class='title small']"));
@@ -107,7 +108,10 @@ namespace SharpDriver.JusBrasil
                     oldV[i].FindElement(By.TagName("a")).Click();
                     ExtractInfo();
                     for (int k = 0; k < BackCount; k++)
+                    {
+                        Thread.Sleep(1000);
                         _webDriver.Navigate().Back();
+                    }
                     BackCount = 1;
                 }
             }
@@ -120,7 +124,10 @@ namespace SharpDriver.JusBrasil
                     newV[i].FindElement(By.TagName("a")).Click();
                     ExtractInfo();
                     for (int k = 0; k < BackCount; k++)
+                    {
+                        Thread.Sleep(1000);
                         _webDriver.Navigate().Back();
+                    }
                     BackCount = 1;
                 }
             }
@@ -140,10 +147,12 @@ namespace SharpDriver.JusBrasil
             BackCount += 1;
             process.FullContent = _webDriver.FindElement(By.XPath("//*[@class='JurisprudencePage-content']")).Text;
             ProcessProcesses.Add(process);
+            string jsonObject = ToJsonString(process);
         }
 
         private void ExtractResume()
         {
+            Thread.Sleep(1000);
             var resumeTitle = _webDriver.FindElements(By.XPath("//*[@class='col-md-9 col-xs-12 JurisprudenceGeneralData-title']"));
             var resumeDescription = _webDriver.FindElements(By.XPath("//*[@class='col-md-9 col-xs-12 JurisprudenceGeneralData-description']"));
             if (resumeTitle.Count == 0)

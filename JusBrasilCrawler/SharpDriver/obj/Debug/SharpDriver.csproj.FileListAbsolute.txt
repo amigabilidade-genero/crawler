@@ -7,3 +7,5 @@ C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\SharpDriver\obj\Debug\S
 C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\SharpDriver\obj\Debug\SharpDriver.csproj.CopyComplete
 C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\SharpDriver\obj\Debug\SharpDriver.dll
 C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\SharpDriver\obj\Debug\SharpDriver.pdb
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\SharpDriver\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\SharpDriver\bin\Debug\Newtonsoft.Json.xml

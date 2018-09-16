@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace SharpDriver.Selenium
 {
@@ -64,6 +65,11 @@ namespace SharpDriver.Selenium
                 return false;
             }
             return true;
+        }
+
+        protected string ToJsonString(object obj)
+        {
+            return JsonConvert.SerializeObject(obj);
         }
 
         #endregion
