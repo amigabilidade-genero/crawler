@@ -7,6 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
+using System.Data;
+using Domain.Repository;
+using Domain.Entities;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace SharpDriver.JusBrasil
 {
@@ -16,42 +22,34 @@ namespace SharpDriver.JusBrasil
 
         private const string URL = "https://www.jusbrasil.com.br";
         private const string LOGIN_URL = "https://www.jusbrasil.com.br/login?next_url=https%3A%2F%2Fwww.jusbrasil.com.br%2Fhome";
-        private const string KeyWorks = "assédio sexual Belo Horizonte";
-        private List<Processo> ProcessProcesses { get; set; }
-        private Processo process { get; set; }
+        private string KeyWorks { get; set; }
+        private List<Process> ListProcess { get; set; }
+        private Process Process { get; set; }
+        public JusBrasilRepository JusBrasilRepository { get; set; }
         private int BackCount = 1;
 
         #endregion
 
         #region Constructor
 
-        public JBCrawler() { }
+        public JBCrawler()  {}
 
         #endregion
 
         #region Public Methods
 
-        public void Start()
+        public void Start(string keyWorks)
         {
+            ListProcess = new List<Process>();
+            KeyWorks = keyWorks;
             InitWebDriver();
-            ProcessProcesses = new List<Processo>();
-            try
-            {
-                Url(URL);
-                Sign();
-                Thread.Sleep(3000);
-                CustomSearchConfig();
-                Search();
-                Navigate();
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-            finally
-            {
-                _webDriver.Quit();
-            }
+            Url(URL);
+            Sign();
+            Thread.Sleep(3000);
+            CustomSearchConfig();
+            Search();
+            Navigate();
+            SaveProcess(ListProcess);
         }
 
         #endregion
@@ -84,106 +82,192 @@ namespace SharpDriver.JusBrasil
 
         private void Navigate()
         {
-            while (ExistsElement("//*[contains(@data-filter-value,'next')]"))
+            try
             {
-                _webDriver.FindElement(By.XPath("//*[contains(@data-filter-value,'next')]")).Click();
-                JusNavigate();
+                if (ExistsElement("//*[contains(@data-filter-value,'next')]") || ExistsElement("//*[@class='pagination-item-link']"))
+                {
+                    while (ExistsElement("//*[contains(@data-filter-value,'next')]"))
+                    {
+                        _webDriver.FindElement(By.XPath("//*[contains(@data-filter-value,'next')]")).Click();
+                        JusNavigate();
+                    }
+                    while (ExistsElement("//*[@class='pagination-item-link']"))
+                    {
+                        _webDriver.FindElement(By.XPath("//*[contains(@aria-label,'Próximo')]")).Click();
+                        JusNavigate();
+                    }
+                    _webDriver.Quit();
+                }
+                else
+                {
+                    JusNavigate();
+                    _webDriver.Quit();
+                }
             }
-            while (ExistsElement("//*[@class='pagination-item-link']"))
+            catch (Exception)
             {
-                _webDriver.FindElement(By.XPath("//*[contains(@aria-label,'Próximo')]")).Click();
-                JusNavigate();
+                _webDriver.Quit();
+                InitWebDriver();
+                //throw e;
+            }finally
+            {
+                _webDriver.Quit();
             }
         }
 
         private void JusNavigate()
         {
-            Thread.Sleep(1000);
-            if (ExistsElement("//*[contains(@class,'title small')]"))
+            try
             {
-                var oldVersionSize = _webDriver.FindElements(By.XPath("//*[@class='title small']"));
-                for (int i = 0; i < oldVersionSize.Count; i++)
+                Thread.Sleep(1000);
+                if (ExistsElement("//*[contains(@class,'title small')]"))
                 {
-                    var oldV = _webDriver.FindElements(By.XPath("//*[@class='title small']"));
-                    oldV[i].FindElement(By.TagName("a")).Click();
-                    ExtractInfo();
-                    for (int k = 0; k < BackCount; k++)
+                    var oldVersionSize = _webDriver.FindElements(By.XPath("//*[@class='title small']"));
+                    for (int i = 0; i < oldVersionSize.Count; i++)
                     {
-                        Thread.Sleep(1000);
-                        _webDriver.Navigate().Back();
+                        var oldV = _webDriver.FindElements(By.XPath("//*[@class='title small']"));
+                        oldV[i].FindElement(By.TagName("a")).Click();
+                        ExtractInfo();
+                        for (int k = 0; k < BackCount; k++)
+                        {
+                            Thread.Sleep(1000);
+                            _webDriver.Navigate().Back();
+                        }
+                        BackCount = 1;
                     }
-                    BackCount = 1;
+                }
+                else
+                {
+                    var newVersion = _webDriver.FindElements(By.ClassName("BaseSnippetWrapper-title"));
+                    for (int i = 0; i < newVersion.Count; i++)
+                    {
+                        var newV = _webDriver.FindElements(By.ClassName("BaseSnippetWrapper-title"));
+                        newV[i].FindElement(By.TagName("a")).Click();
+                        ExtractInfo();
+                        for (int k = 0; k < BackCount; k++)
+                        {
+                            Thread.Sleep(1000);
+                            _webDriver.Navigate().Back();
+                        }
+                        BackCount = 1;
+                    }
                 }
             }
-            else
+            catch (Exception e)
             {
-                var newVersion = _webDriver.FindElements(By.ClassName("BaseSnippetWrapper-title"));
-                for (int i = 0; i < newVersion.Count; i++)
-                {
-                    var newV = _webDriver.FindElements(By.ClassName("BaseSnippetWrapper-title"));
-                    newV[i].FindElement(By.TagName("a")).Click();
-                    ExtractInfo();
-                    for (int k = 0; k < BackCount; k++)
-                    {
-                        Thread.Sleep(1000);
-                        _webDriver.Navigate().Back();
-                    }
-                    BackCount = 1;
-                }
+                throw e;
             }
         }
 
         private void ExtractInfo()
         {
-            var selectType = _webDriver.FindElements(By.ClassName("JurisprudenceDecisionTabs-itemWrapper"));
-            if (!selectType[0].Selected)
+            try
             {
-                selectType[0].Click();
+                var selectType = _webDriver.FindElements(By.ClassName("JurisprudenceDecisionTabs-itemWrapper"));
+                var itemActive = _webDriver.FindElement(By.XPath("//*[@class='JurisprudenceDecisionTabs-item btn active']"));
+
+                if (itemActive.Text.Equals("INTEIRO TEOR"))
+                {
+                    selectType[0].Click();
+                    BackCount += 1;
+                }
+                ExtractResume();
+                selectType = _webDriver.FindElements(By.ClassName("JurisprudenceDecisionTabs-itemWrapper"));
+                selectType[1].Click();
                 BackCount += 1;
+                Process.FullContent = _webDriver.FindElement(By.XPath("//*[@class='JurisprudencePage-content']")).Text;
+                ListProcess.Add(Process);
             }
-            ExtractResume();
-            selectType = _webDriver.FindElements(By.ClassName("JurisprudenceDecisionTabs-itemWrapper"));
-            selectType[1].Click();
-            BackCount += 1;
-            process.FullContent = _webDriver.FindElement(By.XPath("//*[@class='JurisprudencePage-content']")).Text;
-            ProcessProcesses.Add(process);
-            string jsonObject = ToJsonString(process);
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         private void ExtractResume()
         {
-            Thread.Sleep(1000);
-            var resumeTitle = _webDriver.FindElements(By.XPath("//*[@class='col-md-9 col-xs-12 JurisprudenceGeneralData-title']"));
-            var resumeDescription = _webDriver.FindElements(By.XPath("//*[@class='col-md-9 col-xs-12 JurisprudenceGeneralData-description']"));
-            if (resumeTitle.Count == 0)
-                resumeTitle = _webDriver.FindElements(By.XPath("//*[@class='col-md-3 col-xs-12 JurisprudenceGeneralData-title']"));
-
-            process = new Processo();
-            for (int i = 0; i < resumeTitle.Count; i++)
+            try
             {
-                if (resumeTitle[i].Text == "Processo")
+                Thread.Sleep(1000);
+                var resumeTitle = _webDriver.FindElements(By.XPath("//*[@class='col-md-9 col-xs-12 JurisprudenceGeneralData-title']"));
+                var resumeDescription = _webDriver.FindElements(By.XPath("//*[@class='col-md-9 col-xs-12 JurisprudenceGeneralData-description']"));
+                if (resumeTitle.Count == 0)
+                    resumeTitle = _webDriver.FindElements(By.XPath("//*[@class='col-md-3 col-xs-12 JurisprudenceGeneralData-title']"));
+
+                Process = new Process();
+                for (int i = 0; i < resumeTitle.Count; i++)
                 {
-                    process.RO = resumeDescription[i].Text;
-                    continue;
+                    if (resumeTitle[i].Text == "Processo")
+                    {
+                        Process.RO = resumeDescription[i].Text;
+                        continue;
+                    }
+                    else if (resumeTitle[i].Text == "Orgão Julgador")
+                    {
+                        Process.JudicialOrgan = resumeDescription[i].Text;
+                        continue;
+                    }
+                    else if (resumeTitle[i].Text == "Publicação")
+                    {
+                        string[] temp = resumeDescription[i].Text.Split('/');
+                        var date = new DateTime(Convert.ToInt16(temp[2].Split(',')[0]), Convert.ToInt16(temp[1]), Convert.ToInt16(temp[0]));
+                        Process.Publication = date;
+                        continue;
+                    }
+                    else if (resumeTitle[i].Text == "Relator")
+                    {
+                        Process.Reporter = resumeDescription[i].Text;
+                        continue;
+                    }
                 }
-                else if (resumeTitle[i].Text == "Orgão Julgador")
-                {
-                    process.OJ = resumeDescription[i].Text;
-                    continue;
-                }
-                else if (resumeTitle[i].Text == "Publicação")
-                {
-                    process.Publication = resumeDescription[i].Text;
-                    continue;
-                }
-                else if (resumeTitle[i].Text == "Relator")
-                {
-                    process.Reporter = resumeDescription[i].Text;
-                    continue;
-                }
+            }
+            catch (Exception e)
+            {
+
+                throw e;
             }
         }
 
+        public void SaveProcess(List<Process> listProcess)
+        {
+            var march = new March
+            {
+                DateRef = DateTime.Now,
+                Subject = KeyWorks
+            };
+            JusBrasilRepository = new JusBrasilRepository();
+
+            try
+            {
+                JusBrasilRepository.InsertMarch(march);
+                int march_Id = JusBrasilRepository.GetMarchId(march.DateRef, march.Subject);
+                if (listProcess.Count > 0)
+                {
+                    listProcess.ToList().ForEach(p => p.March_Id = march_Id);
+                    JusBrasilRepository.InsertProcess(listProcess);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                JusBrasilRepository.Dispose();
+            }
+        }
+
+        public void JsonWrite()
+        {
+            JusBrasilRepository = new JusBrasilRepository();
+            var lista = JsonConvert.SerializeObject(JusBrasilRepository.GetAll());
+
+            string mydocpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            using (StreamWriter outputFile = new StreamWriter(Path.Combine(mydocpath, "JusBrasil.json")))
+            {
+                outputFile.WriteLine(lista);
+            }
+        }
         #endregion
     }
 }

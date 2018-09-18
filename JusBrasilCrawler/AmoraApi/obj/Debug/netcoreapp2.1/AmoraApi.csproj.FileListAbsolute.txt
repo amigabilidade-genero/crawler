@@ -1,0 +1,14 @@
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\AmoraApi\bin\Debug\netcoreapp2.1\AmoraApi.deps.json
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\AmoraApi\bin\Debug\netcoreapp2.1\AmoraApi.runtimeconfig.json
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\AmoraApi\bin\Debug\netcoreapp2.1\AmoraApi.runtimeconfig.dev.json
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\AmoraApi\bin\Debug\netcoreapp2.1\AmoraApi.dll
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\AmoraApi\bin\Debug\netcoreapp2.1\AmoraApi.pdb
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\AmoraApi\obj\Debug\netcoreapp2.1\AmoraApi.csprojAssemblyReference.cache
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\AmoraApi\obj\Debug\netcoreapp2.1\AmoraApi.csproj.CoreCompileInputs.cache
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\AmoraApi\obj\Debug\netcoreapp2.1\AmoraApi.RazorAssemblyInfo.cache
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\AmoraApi\obj\Debug\netcoreapp2.1\AmoraApi.RazorAssemblyInfo.cs
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\AmoraApi\obj\Debug\netcoreapp2.1\AmoraApi.AssemblyInfoInputs.cache
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\AmoraApi\obj\Debug\netcoreapp2.1\AmoraApi.AssemblyInfo.cs
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\AmoraApi\obj\Debug\netcoreapp2.1\AmoraApi.RazorTargetAssemblyInfo.cache
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\AmoraApi\obj\Debug\netcoreapp2.1\AmoraApi.dll
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\AmoraApi\obj\Debug\netcoreapp2.1\AmoraApi.pdb

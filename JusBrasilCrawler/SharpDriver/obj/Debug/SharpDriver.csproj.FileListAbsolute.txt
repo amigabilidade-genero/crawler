@@ -9,3 +9,11 @@ C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\SharpDriver\obj\Debug\S
 C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\SharpDriver\obj\Debug\SharpDriver.pdb
 C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\SharpDriver\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\SharpDriver\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\SharpDriver\bin\Debug\Dapper.dll
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\SharpDriver\bin\Debug\Domain.dll
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\SharpDriver\bin\Debug\MySql.Data.dll
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\SharpDriver\bin\Debug\Google.Protobuf.dll
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\SharpDriver\bin\Debug\Domain.pdb
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\SharpDriver\bin\Debug\Domain.dll.config
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\SharpDriver\bin\Debug\Dapper.xml
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\SharpDriver\bin\Debug\MySql.Data.xml

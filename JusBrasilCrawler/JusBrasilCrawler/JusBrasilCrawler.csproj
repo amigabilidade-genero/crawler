@@ -62,6 +62,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{6316ce41-7e6c-41d5-bf2c-48c0b582d9bf}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SharpDriver\SharpDriver.csproj">
       <Project>{25b66236-a1da-4f98-86d7-1ce3b6f5a354}</Project>
       <Name>SharpDriver</Name>

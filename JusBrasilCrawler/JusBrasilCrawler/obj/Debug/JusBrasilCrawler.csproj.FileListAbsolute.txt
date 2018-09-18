@@ -14,3 +14,10 @@ C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\JusBrasilCrawler\bin\De
 C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\JusBrasilCrawler\bin\Debug\Google.Protobuf.xml
 C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\JusBrasilCrawler\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\JusBrasilCrawler\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\JusBrasilCrawler\bin\Debug\Domain.dll
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\JusBrasilCrawler\bin\Debug\MySql.Data.dll
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\JusBrasilCrawler\bin\Debug\Dapper.dll
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\JusBrasilCrawler\bin\Debug\Domain.pdb
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\JusBrasilCrawler\bin\Debug\Domain.dll.config
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\JusBrasilCrawler\bin\Debug\MySql.Data.xml
+C:\Users\Paulo\Documents\GitHub\crawler\JusBrasilCrawler\JusBrasilCrawler\bin\Debug\Dapper.xml
